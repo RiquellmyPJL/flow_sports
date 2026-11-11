@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flow Sports | Luxury Sneakers & Streetwear</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Variáveis de Cores (Tema Escuro - Padrão Premium) */
+        :root[data-theme="dark"] {
+            --bg-color: #070707;
+            --bg-secondary: #0f0f0f;
+            --card-bg: #121212;
+            --card-hover: #171717;
+            --gold: #dfb15b;
+            --gold-light: #f7e3ad;
+            --gold-dark: #b88d33;
+            --text-main: #f5f5f7;
+            --text-muted: #999999;
+            --border-color: #222222;
+            --border-hover: #dfb15b;
+            --img-bg: #161616;
+            --badge-bg: rgba(223, 177, 91, 0.15);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Variáveis de Cores (Tema Claro - Minimalista Luxury) */
+        :root[data-theme="light"] {
+            --bg-color: #f4f4f6;
+            --bg-secondary: #ffffff;
+            --card-bg: #ffffff;
+            --card-hover: #fafafa;
+            --gold: #b38f3e;
+            --gold-light: #cfab59;
+            --gold-dark: #8c6d26;
+            --text-main: #111111;
+            --text-muted: #666666;
+            --border-color: #e2e2e5;
+            --border-hover: #b38f3e;
+            --img-bg: #f0f0f3;
+            --badge-bg: rgba(179, 143, 62, 0.1);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Top Announcement Bar */
+        .announcement-bar {
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
+            color: #070707;
+            text-align: center;
+            padding: 8px 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* Header & Navbar */
+        header {
+            background: var(--bg-secondary);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 20px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--gold);
+            font-weight: 400;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .theme-toggle, .cart-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 10px 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .theme-toggle:hover, .cart-btn:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: var(--badge-bg);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: radial-gradient(circle at center, rgba(223,177,91,0.08) 0%, transparent 70%);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: 0 auto;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 5%;
+            width: 100%;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+
+        .section-header.margin-top {
+            margin-top: 60px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-main);
+        }
+
+        .section-title span {
+            color: var(--gold);
+        }
+
+        .products-count {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 35px;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: var(--shadow);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-hover);
+            background: var(--card-hover);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--badge-bg);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+        }
+
+        .product-img-container {
+            width: 100%;
+            height: 300px;
+            background: var(--img-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-img-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+        }
+
+        .product-card:hover .product-img-container img {
+            transform: scale(1.1) rotate(-3deg);
+        }
+
+        .product-info {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-main);
+        }
+
+        .product-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .sizes-container {
+            margin-bottom: 25px;
+        }
+
+        .sizes-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            display: block;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .sizes-options {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .size-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            width: 42px;
+            height: 42px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.25s ease;
+        }
+
+        .size-btn:hover, .size-btn.active {
+            border-color: var(--gold);
+            background: var(--badge-bg);
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: auto;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .btn-buy {
+            background: var(--gold);
+            color: #070707;
+        }
+
+        .btn-buy:hover {
+            background: var(--gold-light);
+            box-shadow: 0 5px 20px rgba(223, 177, 91, 0.3);
+        }
+
+        .btn-cart {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-cart:hover {
+            border-color: var(--text-main);
+            background: var(--badge-bg);
+        }
+
+        /* Drawer do Carrinho Lateral */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1099;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .cart-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: -420px;
+            width: 100%;
+            max-width: 400px;
+            height: 100%;
+            background: var(--bg-secondary);
+            border-left: 1px solid var(--border-color);
+            z-index: 1100;
+            display: flex;
+            flex-direction: column;
+            transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+        }
+
+        .cart-drawer.open {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 25px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h3 {
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .cart-body {
+            padding: 25px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .cart-empty {
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .cart-item-info h4 {
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .cart-item-info p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cart-item-actions button {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .cart-footer {
+            padding: 25px;
+            border-top: 1px solid var(--border-color);
+            background: var(--card-bg);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .cart-total span:last-child {
+            color: var(--gold);
+        }
+
+        .btn-checkout {
+            width: 100%;
+            background: #25d366;
+            color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-checkout:hover {
+            background: #20ba5a;
+        }
+
+        /* Floating WhatsApp Support Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 35px;
+            right: 35px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            z-index: 998;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(10deg);
+            background: #20ba5a;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: auto;
+            letter-spacing: 1px;
+        }
+
+        footer span {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.1rem; }
+            .products-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Announcement Bar -->
+    <div class="announcement-bar">
+        ⚡ Frete Grátis para todo o Brasil em compras acima de R$ 199 • Edições Limitadas ⚡
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Flow <span>Sports</span></div>
+        <div class="header-actions">
+            <button class="theme-toggle" id="themeToggleBtn" onclick="toggleTheme()" title="Alternar Modo Claro/Escuro">
+                <i class="fa-solid fa-moon" id="themeIcon"></i>
+            </button>
+            <button class="cart-btn" onclick="abrirCarrinho()">
+                <i class="fa-solid fa-bag-shopping"></i> Carrinho (<span id="cartCount">0</span>)
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Seja bem-vindo à <span>FLOW SPORTS</span></h1>
+        <p>Eleve o seu estilo com peças exclusivas, coleções limitadas e o melhor do streetwear de luxo mundial.</p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        
+        <!-- Seção Sneakers -->
+        <div class="section-header">
+            <h2 class="section-title">Air Max <span>Collection</span></h2>
+            <span class="products-count">9 Produtos Disponíveis</span>
+        </div>
+
+        <div class="products-grid">
+            
+            <!-- TN 1 -->
+            <div class="product-card">
+                <span class="product-badge">Best Seller</span>
+                <div class="product-img-container">
+                    <img src="tenis 1.avif" alt="Air Max TN 95" onerror="this.src='https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500'">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Air Max TN 95</h3>
+                    <span class="product-desc">Conforto e Estilo</span>
+                    <div class="product-price">R$ 1.199,99</div>
+                    <div class="sizes-container">
+                        <span class="sizes-label">Selecione o Tamanho (BR):</span>
+                        <div class="sizes-options">
+                            <button class="size-btn" onclick="selectSize(this)">38</button>
+                            <button class="size-btn" onclick="selectSize(this)">39</button>
+                            <button class="size-btn" onclick="selectSize(this)">40</button>
+                            <button class="size-btn" onclick="selectSize(this)">41</button>
+                            <button class="size-btn" onclick="selectSize(this)">42</button>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-buy" onclick="finalizarCompraUnica(this)">Comprar</button>
+                        <button class="btn btn-cart" onclick="adicionarCarrinhoPorElemento(this)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TN 2 -->
+            <div class="product-card">
+                <span class="product-badge">Original</span>
+                <div class="product-img-container">
+                    <img src="tn 2.avif" alt="Air Max 95 Original" onerror="this.src='https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500'">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Air Max 95 Original</h3>
+                    <span class="product-desc">Ícone de Performance</span>
+                    <div class="product-price">R$ 1.299,99</div>
+                    <div class="sizes-container">
+                        <span class="sizes-label">Selecione o Tamanho (BR):</span>
+                        <div class="sizes-options">
+                            <button class="size-btn" onclick="selectSize(this)">38</button>
+                            <button class="size-btn" onclick="selectSize(this)">39</button>
+                            <button class="size-btn" onclick="selectSize(this)">40</button>
+                            <button class="size-btn" onclick="selectSize(this)">41</button>
+                            <button class="size-btn" onclick="selectSize(this)">42</button>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-buy" onclick="finalizarCompraUnica(this)">Comprar</button>
+                        <button class="btn btn-cart" onclick="adicionarCarrinhoPorElemento(this)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TN 3 -->
+            <div class="product-card">
+                <span class="product-badge">Edição Limitada</span>
+                <div class="product-img-container">
+                    <img src="tn3.avif" alt="Air Max 95 SB" onerror="this.src='https://images.unsplash.com/photo-1607522370275-f14206abe5d3?w=500'">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Air Max 95 SB</h3>
+                    <span class="product-desc">Edição Limitada</span>
+                    <div class="product-price">R$ 1.399,99</div>
+                    <div class="sizes-container">
+                        <span class="sizes-label">Selecione o Tamanho (BR):</span>
+                        <div class="sizes-options">
+                            <button class="size-btn" onclick="selectSize(this)">38</button>
+                            <button class="size-btn" onclick="selectSize(this)">39</button>
+                            <button class="size-btn" onclick="selectSize(this)">40</button>
+                            <button class="size-btn" onclick="selectSize(this)">41</button>
+                            <button class="size-btn" onclick="selectSize(this)">42</button>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-buy" onclick="finalizarCompraUnica(this)">Comprar</button>
+                        <button class="btn btn-cart" onclick="adicionarCarrinhoPorElemento(this)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TN 4 -->
+            <div class="product-card">
+                <span class="product-badge">Exclusivo</span>
+                <div class="product-img-container">
+                    <img src="tn 4.avif" alt="Air Max 95 Dubble" onerror="this.src='https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500'">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Air Max 95 Dubble</h3>
+                    <span class="product-desc">Design Autêntico</span>
+                    <div class="product-price">R$ 1.249,99</div>
+                    <div class="sizes-container">
+                        <span class="sizes-label">Selecione o Tamanho (BR):</span>
+                        <div class="sizes-options">
+                            <button class="size-btn" onclick="selectSize(this)">38</button>
+                            <button class="size-btn" onclick="selectSize(this)">39</button>
+                            <button class="size-btn" onclick="selectSize(this)">40</button>
+                            <button class="size-btn" onclick="selectSize(this)">41</button>
+                            <button class="size-btn" onclick="selectSize(this)">42</button>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-buy" onclick="finalizarCompraUnica(this)">Comprar</button>
+                        <button class="btn btn-cart" onclick="adicionarCarrinhoPorElemento(this)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TN 5 -->
+            <div class="product-card">
+                <span class="product-badge">Destaque</span>
+                <div class="product-img-container">
+                    <img src="tn5.avif" alt="Air Max 95 Pink Foam" onerror="this.src='https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?w=500'">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Air Max 95 "Pink Foam"</h3>
+                    <span class="product-desc">Estilo Urbano</span>
+                    <div class="product-price">R$ 1.199,99</div>
+                    <div class="sizes-container">
+                        <span class="sizes-label">Selecione o Tamanho (BR):</span>
+                        <div class="sizes-options">
+                            <button class="size-btn" onclick="selectSize(this)">38</button>
+                            <button class="size-btn" onclick="selectSize(this)">39</button>
+                            <button class="size-btn" onclick="selectSize(this)">40</button>
+                            <button class="size-btn" onclick="selectSize(this)">41</button>
+                            <button class="size-btn" onclick="selectSize(this)">42</button>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-buy" onclick="finalizarCompraUnica(this)">Comprar</button>
+                        <button class="btn btn-cart" onclick="adicionarCarrinhoPorElemento(this)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TN 6 -->
+            <div class="product-card">
+                <span class="product-badge">Coleção Especial</span>
+                <div class="product-img-container">
+                    <img src="tn6.avif" alt="Air Max 95 OG Orewood" onerror="this.src='https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=500'">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Air Max 95 OG Orewood</h3>
+                    <span class="product-desc">Coleção Especial</span>
+                    <div class="product-price">R$ 1.349,99</div>
+                    <div class="sizes-container">
+                        <span class="sizes-label">Selecione o Tamanho (BR):</span>
+                        <div class="sizes-options">
+                            <button class="size-btn" onclick="selectSize(this)">38</button>
+                            <button class="size-btn" onclick="selectSize(this)">39</button>
+                            <button class="size-btn" onclick="selectSize(this)">40</button>
+                            <button class="size-btn" onclick="selectSize(this)">41</button>
+                            <button class="size-btn" onclick="selectSize(this)">42</button>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-buy" onclick="finalizarCompraUnica(this)">Comprar</button>
+                        <button class="btn btn-cart" onclick="adicionarCarrinhoPorElemento(this)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TN 7 -->
+            <div class="product-card">
+                <span class="product-badge">Coleção Especial</span>
+                <div class="product-img-container">
+                    <img src="tn 7.avif" alt="Air Max 95 OG Big Bubble Lawson" onerror="this.src='https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=500'">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Air Max 95 OG Big Bubble</h3>
+                    <span class="product-desc">Lawson Edition</span>
+                    <div class="product-price">R$ 1.449,99</div>
+                    <div class="sizes-container">
+                        <span class="sizes-label">Selecione o Tamanho (BR):</span>
+                        <div class="sizes-options">
+                            <button class="size-btn" onclick="selectSize(this)">38</button>
+                            <button class="size-btn" onclick="selectSize(this)">39</button>
+                            <button class="size-btn" onclick="selectSize(this)">40</button>
+                            <button class="size-btn" onclick="selectSize(this)">41</button>
+                            <button class="size-btn" onclick="selectSize(this)">42</button>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-buy" onclick="finalizarCompraUnica(this)">Comprar</button>
+                        <button class="btn btn-cart" onclick="adicionarCarrinhoPorElemento(this)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TN 8 (tn9) -->
+            <div class="product-card">
+                <span class="product-badge">Coleção Especial</span>
+                <div class="product-img-container">
+                    <img src="tn9.avif" alt="Nike Air Max 95 Big Bubble SE" onerror="this.src='https://images.unsplash.com/photo-1539185441755-769473a23570?w=500'">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Air Max 95 Big Bubble SE</h3>
+                    <span class="product-desc">Edição Limitada</span>
+                    <div class="product-price">R$ 1.549,99</div>
+                    <div class="sizes-container">
+                        <span class="sizes-label">Selecione o Tamanho (BR):</span>
+                        <div class="sizes-options">
+                            <button class="size-btn" onclick="selectSize(this)">38</button>
+                            <button class="size-btn" onclick="selectSize(this)">39</button>
+                            <button class="size-btn" onclick="selectSize(this)">40</button>
+                            <button class="size-btn" onclick="selectSize(this)">41</button>
+                            <button class="size-btn" onclick="selectSize(this)">42</button>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-buy" onclick="finalizarCompraUnica(this)">Comprar</button>
+                        <button class="btn btn-cart" onclick="adicionarCarrinhoPorElemento(this)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TN 9 (tn10) -->
+            <div class="product-card">
+                <span class="product-badge">Coleção Especial</span>
+                <div class="product-img-container">
+                    <img src="tn10.avif" alt="Nike Air Max 95 Big Bubble Marrom" onerror="this.src='https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500'">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Air Max 95 Big Bubble</h3>
+                    <span class="product-desc">Edição Marrom</span>
+                    <div class="product-price">R$ 1.249,99</div>
+                    <div class="sizes-container">
+                        <span class="sizes-label">Selecione o Tamanho (BR):</span>
+                        <div class="sizes-options">
+                            <button class="size-btn" onclick="selectSize(this)">38</button>
+                            <button class="size-btn" onclick="selectSize(this)">39</button>
+                            <button class="size-btn" onclick="selectSize(this)">40</button>
+                            <button class="size-btn" onclick="selectSize(this)">41</button>
+                            <button class="size-btn" onclick="selectSize(this)">42</button>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-buy" onclick="finalizarCompraUnica(this)">Comprar</button>
+                        <button class="btn btn-cart" onclick="adicionarCarrinhoPorElemento(this)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Seção Casacos e Moletons -->
+        <div class="section-header margin-top">
+            <h2 class="section-title">Casacos & <span>Moletons</span></h2>
+            <span class="products-count">8 Produtos Disponíveis</span>
+        </div>
+
+        <div class="products-grid">
+            
+            <!-- Blusa 1: Barcelona -->
+            <div class="product-card">
+                <span class="product-badge">Destaque</span>
+                <div class="product-img-container">
+                    <img src="conjunto barcelona 1.webp" alt="Conjunto Barcelona" onerror="this.src='https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=500'">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Conjunto Barcelona</h3>
+                    <span class="product-desc">Estilo Urbano Exclusivo</span>
+                    <div class="product-price">R$ 449,99</div>
+                    <div class="sizes-container">
+                        <span class="sizes-label">Selecione o Tamanho:</span>
+                        <div class="sizes-options">
+                            <button class="size-btn" onclick="selectSize(this)">P</button>
+                            <button class="size-btn" onclick="selectSize(this)">M</button>
+                            <button class="size-btn" onclick="selectSize(this)">G</button>
+                            <button class="size-btn" onclick="selectSize(this)">GG</button>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-buy" onclick="finalizarCompraUnica(this)">Comprar</button>
+                        <button class="btn btn-cart" onclick="adicionarCarrinhoPorElemento(this)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blusa 2: Liverpool -->
+            <div class="product-card">
+                <span class="product-badge">Destaque</span>
+                <div class="product-img-container">
+                    <img src="conjunto liverpool.webp" alt="Conjunto Liverpool" onerror="this.src='https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500'">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Conjunto Liverpool</h3>
+                    <span class="product-desc">Exclusivo</span>
+                    <div class="product-price">R$ 389,99</div>
+                    <div class="sizes-container">
+                        <span class="sizes-label">Selecione o Tamanho:</span>
+                        <div class="sizes-options">
+                            <button class="size-btn" onclick="selectSize(this)">P</button>
+                            <button class="size-btn" onclick="selectSize(this)">M</button>
+                            <button class="size-btn" onclick="selectSize(this)">G</button>
+                            <button class="size-btn" onclick="selectSize(this)">GG</button>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-buy" onclick="finalizarCompraUnica(this)">Comprar</button>
+                        <button class="btn btn-cart" onclick="adicionarCarrinhoPorElemento(this)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blusa 3: brasil -->
+            <div class="product-card">
+                <span class="product-badge">Destaque</span>
+                <div class="product-img-container">
+                    <img src="conjunto brasil.webp" alt="Conjunto Real Madrid" onerror="this.src='https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500'">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Conjunto Brasil</h3>
+                    <span class="product-desc">Streetwear Luxury</span>
+                    <div class="product-price">R$ 429,99</div>
+                    <div class="sizes-container">
+                        <span class="sizes-label">Selecione o Tamanho:</span>
+                        <div class="sizes-options">
+                            <button class="size-btn" onclick="selectSize(this)">P</button>
+                            <button class="size-btn" onclick="selectSize(this)">M</button>
+                            <button class="size-btn" onclick="selectSize(this)">G</button>
+                            <button class="size-btn" onclick="selectSize(this)">GG</button>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-buy" onclick="finalizarCompraUnica(this)">Comprar</button>
+                        <button class="btn btn-cart" onclick="adicionarCarrinhoPorElemento(this)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blusa 4: PSG -->
+            <div class="product-card">
+                <span class="product-badge">Coleção Especial</span>
+                <div class="product-img-container">
+                    <img src="psg.webp" alt="Conjunto PSG" onerror="this.src='https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500'">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Conjunto PSG</h3>
+                    <span class="product-desc">Edição Paris</span>
+                    <div class="product-price">R$ 459,99</div>
+                    <div class="sizes-container">
+                        <span class="sizes-label">Selecione o Tamanho:</span>
+                        <div class="sizes-options">
+                            <button class="size-btn" onclick="selectSize(this)">P</button>
+                            <button class="size-btn" onclick="selectSize(this)">M</button>
+                            <button class="size-btn" onclick="selectSize(this)">G</button>
+                            <button class="size-btn" onclick="selectSize(this)">GG</button>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-buy" onclick="finalizarCompraUnica(this)">Comprar</button>
+                        <button class="btn btn-cart" onclick="adicionarCarrinhoPorElemento(this)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blusa 5: Manchester United -->
+            <div class="product-card">
+                <span class="product-badge">Destaque</span>
+                <div class="product-img-container">
+                    <img src="conjunto inter.webp" alt="Conjunto Manchester United" onerror="this.src='https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=500'">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Conjunto Inter d´ Milão</h3>
+                    <span class="product-desc">Estilo Urbano</span>
+                    <div class="product-price">R$ 399,99</div>
+                    <div class="sizes-container">
+                        <span class="sizes-label">Selecione o Tamanho:</span>
+                        <div class="sizes-options">
+                            <button class="size-btn" onclick="selectSize(this)">P</button>
+                            <button class="size-btn" onclick="selectSize(this)">M</button>
+                            <button class="size-btn" onclick="selectSize(this)">G</button>
+                            <button class="size-btn" onclick="selectSize(this)">GG</button>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-buy" onclick="finalizarCompraUnica(this)">Comprar</button>
+                        <button class="btn btn-cart" onclick="adicionarCarrinhoPorElemento(this)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blusa 6: Arsenal -->
+            <div class="product-card">
+                <span class="product-badge">Exclusivo</span>
+                <div class="product-img-container">
+                    <img src="corin.jpg" alt="Conjunto Arsenal" onerror="this.src='https://images.unsplash.com/photo-1562157873-818bc0726f68?w=500'">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Conjunto Corinthians</h3>
+                    <span class="product-desc">Design Autêntico</span>
+                    <div class="product-price">R$ 419,99</div>
+                    <div class="sizes-container">
+                        <span class="sizes-label">Selecione o Tamanho:</span>
+                        <div class="sizes-options">
+                            <button class="size-btn" onclick="selectSize(this)">P</button>
+                            <button class="size-btn" onclick="selectSize(this)">M</button>
+                            <button class="size-btn" onclick="selectSize(this)">G</button>
+                            <button class="size-btn" onclick="selectSize(this)">GG</button>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-buy" onclick="finalizarCompraUnica(this)">Comprar</button>
+                        <button class="btn btn-cart" onclick="adicionarCarrinhoPorElemento(this)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blusa 7: Bayern de Munich -->
+            <div class="product-card">
+                <span class="product-badge">Destaque</span>
+                <div class="product-img-container">
+                    <img src="conjunto frança.webp" alt="Conjunto Bayern de Munich" onerror="this.src='https://images.unsplash.com/photo-1543076447-215ad9ba6923?w=500'">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Conjunto França</h3>
+                    <span class="product-desc">Alta Performance</span>
+                    <div class="product-price">R$ 439,99</div>
+                    <div class="sizes-container">
+                        <span class="sizes-label">Selecione o Tamanho:</span>
+                        <div class="sizes-options">
+                            <button class="size-btn" onclick="selectSize(this)">P</button>
+                            <button class="size-btn" onclick="selectSize(this)">M</button>
+                            <button class="size-btn" onclick="selectSize(this)">G</button>
+                            <button class="size-btn" onclick="selectSize(this)">GG</button>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-buy" onclick="finalizarCompraUnica(this)">Comprar</button>
+                        <button class="btn btn-cart" onclick="adicionarCarrinhoPorElemento(this)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blusa 8: Juventus -->
+            <div class="product-card">
+                <span class="product-badge">Coleção Especial</span>
+                <div class="product-img-container">
+                    <img src="CHELSEA.webp." alt="Conjunto Juventus" onerror="this.src='https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=500'">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Conjunto Chealsea</h3>
+                    <span class="product-desc">Minimalista Luxury</span>
+                    <div class="product-price">R$ 419,99</div>
+                    <div class="sizes-container">
+                        <span class="sizes-label">Selecione o Tamanho:</span>
+                        <div class="sizes-options">
+                            <button class="size-btn" onclick="selectSize(this)">P</button>
+                            <button class="size-btn" onclick="selectSize(this)">M</button>
+                            <button class="size-btn" onclick="selectSize(this)">G</button>
+                            <button class="size-btn" onclick="selectSize(this)">GG</button>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-buy" onclick="finalizarCompraUnica(this)">Comprar</button>
+                        <button class="btn btn-cart" onclick="adicionarCarrinhoPorElemento(this)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+  <!-- Blusa 9: Juventus -->
+            <div class="product-card">
+                <span class="product-badge">Coleção Especial</span>
+                <div class="product-img-container">
+                    <img src="conjunto inglaterra.webp" alt="Conjunto Juventus" onerror="this.src='https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=500'">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Conjunto Inglaterra</h3>
+                    <span class="product-desc">Minimalista Luxury</span>
+                    <div class="product-price">R$ 419,99</div>
+                    <div class="sizes-container">
+                        <span class="sizes-label">Selecione o Tamanho:</span>
+                        <div class="sizes-options">
+                            <button class="size-btn" onclick="selectSize(this)">P</button>
+                            <button class="size-btn" onclick="selectSize(this)">M</button>
+                            <button class="size-btn" onclick="selectSize(this)">G</button>
+                            <button class="size-btn" onclick="selectSize(this)">GG</button>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-buy" onclick="finalizarCompraUnica(this)">Comprar</button>
+                        <button class="btn btn-cart" onclick="adicionarCarrinhoPorElemento(this)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Carrinho Drawer (Painel Deslizante) -->
+    <div class="cart-overlay" id="cartOverlay" onclick="fecharCarrinho()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>Seu Carrinho</h3>
+            <button class="close-cart" onclick="fecharCarrinho()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-body" id="cartItemsContainer">
+            <!-- Itens inseridos dinamicamente via JS -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotalPrice">R$ 0,00</span>
+            </div>
+            <button class="btn-checkout" onclick="finalizarCarrinhoWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> Finalizar Pedido via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Support Button -->
+    <a href="https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20tirar%20dúvidas%20sobre%20os%20produtos%20da%20Flow%20Sports." class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 <span>Flow Sports</span>. Todos os direitos reservados. Luxury Sneakers & Streetwear.</p>
+    </footer>
+
+    <!-- JavaScript Integrado -->
+    <script>
+        let carrinho = JSON.parse(localStorage.getItem('flow_cart')) || [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            atualizarContadorCarrinho();
+            carregarTemaSalvo();
+            renderizarCarrinhoLateral();
+        });
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('themeIcon');
+            
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.setAttribute('data-theme', 'light');
+                themeIcon.className = 'fa-solid fa-sun';
+                localStorage.setItem('flow_theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fa-solid fa-moon';
+                localStorage.setItem('flow_theme', 'dark');
+            }
+        }
+
+        function carregarTemaSalvo() {
+            const temaSalvo = localStorage.getItem('flow_theme') || 'dark';
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('themeIcon');
+            
+            html.setAttribute('data-theme', temaSalvo);
+            if (temaSalvo === 'light') {
+                themeIcon.className = 'fa-solid fa-sun';
+            } else {
+                themeIcon.className = 'fa-solid fa-moon';
+            }
+        }
+
+        function selectSize(button) {
+            const container = button.closest('.sizes-options');
+            container.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+        }
+
+        function obterTamanhoSelecionado(cardElement) {
+            const ativo = cardElement.querySelector('.size-btn.active');
+            return ativo ? ativo.innerText : null;
+        }
+
+        function adicionarCarrinhoPorElemento(btnElement) {
+            const card = btnElement.closest('.product-card');
+            const nome = card.querySelector('.product-title').innerText;
+            const precoTexto = card.querySelector('.product-price').innerText;
+            const tamanho = obterTamanhoSelecionado(card);
+
+            if (!tamanho) {
+                alert('⚠️ Por favor, selecione um tamanho antes de adicionar ao carrinho.');
+                return;
+            }
+
+            const precoNumerico = parseFloat(precoTexto.replace('R$', '').replace('.', '').replace(',', '.').trim());
+            const index = carrinho.findIndex(item => item.nome === nome && item.tamanho === tamanho);
+            
+            if (index > -1) {
+                carrinho[index].quantidade += 1;
+            } else {
+                carrinho.push({
+                    id: `${nome}-${tamanho}`,
+                    nome: nome,
+                    tamanho: tamanho,
+                    preco: precoNumerico,
+                    precoFormatado: precoTexto,
+                    quantidade: 1
+                });
+            }
+
+            salvarCarrinho();
+            atualizarContadorCarrinho();
+            renderizarCarrinhoLateral();
+            animarBotaoCarrinho();
+        }
+
+        function alterarQuantidade(id, delta) {
+            const item = carrinho.find(i => i.id === id);
+            if (item) {
+                item.quantidade += delta;
+                if (item.quantidade <= 0) {
+                    carrinho = carrinho.filter(i => i.id !== id);
+                }
+                salvarCarrinho();
+                atualizarContadorCarrinho();
+                renderizarCarrinhoLateral();
+            }
+        }
+
+        function salvarCarrinho() {
+            localStorage.setItem('flow_cart', JSON.stringify(carrinho));
+        }
+
+        function atualizarContadorCarrinho() {
+            const totalItens = carrinho.reduce((sum, item) => sum + item.quantidade, 0);
+            document.getElementById('cartCount').innerText = totalItens;
+        }
+
+        function abrirCarrinho() {
+            document.getElementById('cartDrawer').classList.add('open');
+            document.getElementById('cartOverlay').classList.add('active');
+        }
+
+        function fecharCarrinho() {
+            document.getElementById('cartDrawer').classList.remove('open');
+            document.getElementById('cartOverlay').classList.remove('active');
+        }
+
+        function renderizarCarrinhoLateral() {
+            const container = document.getElementById('cartItemsContainer');
+            const totalPriceEl = document.getElementById('cartTotalPrice');
+            
+            if (carrinho.length === 0) {
+                container.innerHTML = `<p class="cart-empty">Seu carrinho está vazio.</p>`;
+                totalPriceEl.innerText = 'R$ 0,00';
+                return;
+            }
+
+            let html = '';
+            let totalGeral = 0;
+
+            carrinho.forEach(item => {
+                const subtotal = item.preco * item.quantidade;
+                totalGeral += subtotal;
+
+                html += `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <h4>${item.nome}</h4>
+                            <p>Tam: <strong>${item.tamanho}</strong> | ${item.precoFormatado}</p>
+                        </div>
+                        <div class="cart-item-actions">
+                            <button onclick="alterarQuantidade('${item.id}', -1)">-</button>
+                            <span>${item.quantidade}</span>
+                            <button onclick="alterarQuantidade('${item.id}', 1)">+</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            totalPriceEl.innerText = `R$ ${totalGeral.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        }
+
+        function animarBotaoCarrinho() {
+            const btn = document.querySelector('.cart-btn');
+            btn.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                btn.style.transform = 'scale(1)';
+            }, 200);
+        }
+
+        function finalizarCompraUnica(btnElement) {
+            const card = btnElement.closest('.product-card');
+            const nome = card.querySelector('.product-title').innerText;
+            const preco = card.querySelector('.product-price').innerText;
+            const tamanho = obterTamanhoSelecionado(card);
+
+            if (!tamanho) {
+                alert('⚠️ Por favor, selecione um tamanho antes de finalizar a compra.');
+                return;
+            }
+
+            const mensagem = encodeURIComponent(`Olá! Gostaria de comprar o produto *${nome}* (Tamanho: ${tamanho}) por *${preco}*. Poderia me ajudar com o pedido?`);
+            window.open(`https://wa.me/5511999999999?text=${mensagem}`, '_blank');
+        }
+
+        function finalizarCarrinhoWhatsApp() {
+            if (carrinho.length === 0) {
+                alert("Seu carrinho está vazio.");
+                return;
+            }
+
+            let textoItens = carrinho.map(i => `• ${i.quantidade}x ${i.nome} (Tam: ${i.tamanho}) - R$ ${(i.preco * i.quantidade).toFixed(2).replace('.', ',')}`).join('\n');
+            const totalGeral = carrinho.reduce((sum, item) => sum + (item.preco * item.quantidade), 0);
+            
+            const mensagem = encodeURIComponent(`Olá! Gostaria de fechar o seguinte pedido na Flow Sports:\n\n${textoItens}\n\n*Total: R$ ${totalGeral.toFixed(2).replace('.', ',')}*\n\nComo proceder com o pagamento?`);
+            window.open(`https://wa.me/5511999999999?text=${mensagem}`, '_blank');
+        }
+    </script>
+</body>
+</html>
